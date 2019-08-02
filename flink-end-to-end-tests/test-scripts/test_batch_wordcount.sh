@@ -42,6 +42,7 @@ case $INPUT_TYPE in
     (presto_with_provider)
         source "$(dirname "$0")"/common_s3.sh
         s3_setup_with_provider presto "presto.s3.credentials-provider"
+        set_config_key "presto.s3.use-instance-credentials" "false"
         INPUT_LOCATION="${S3_TEST_DATA_WORDS_URI}"
     ;;
     (dummy-fs)
