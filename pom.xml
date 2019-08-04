@@ -213,15 +213,13 @@ under the License.
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<type>jar</type>
-			<scope>test</scope>
+			<version>${slf4j.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<type>jar</type>
-			<scope>test</scope>
+			<version>${log4j.version}</version>
 		</dependency>
 
 	</dependencies>

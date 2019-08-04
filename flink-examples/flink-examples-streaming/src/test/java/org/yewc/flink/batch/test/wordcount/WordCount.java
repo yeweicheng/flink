@@ -16,15 +16,15 @@
  * limitations under the License.
  */
 
-package org.apache.flink.examples.java.wordcount;
+package org.yewc.flink.batch.test.wordcount;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
-import org.apache.flink.examples.java.wordcount.util.WordCountData;
 import org.apache.flink.util.Collector;
+import org.yewc.flink.batch.test.wordcount.util.WordCountData;
 
 /**
  * Implements the "WordCount" program that computes a simple word occurrence histogram

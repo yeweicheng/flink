@@ -36,6 +36,15 @@ under the License.
 
 	<dependencies>
 
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>xxxx</artifactId>
+			<version>${project.version}</version>
+			<scope>system</scope>
+			<systemPath>D:/IdeaProjects/flink/flink-runtime-web/target/flink-runtime-web_2.11-1.8-SNAPSHOT.jar
+			</systemPath>
+		</dependency>
+
 		<!-- core dependencies -->
 
 		<dependency>
