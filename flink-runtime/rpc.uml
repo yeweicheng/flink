@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.flink.runtime.entrypoint.component.DispatcherResourceManagerComponent</OriginalElement>
+  <nodes>
+    <node x="405.0" y="410.0">org.apache.flink.runtime.rpc.RpcEndpointTest.ExtendedGateway</node>
+    <node x="922.0527518978606" y="410.0">org.apache.flink.runtime.rpc.RpcEndpointTest.BaseEndpoint</node>
+    <node x="2246.8635265700486" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorOversizedResponseMessageTest.MessageRpcEndpoint</node>
+    <node x="2613.8206090407175" y="230.0">org.apache.flink.runtime.rpc.RpcEndpoint</node>
+    <node x="585.0301932367147" y="530.0">org.apache.flink.runtime.rpc.RpcEndpointTest.ExtendedEndpoint</node>
+    <node x="179.0" y="230.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.DummyRpcGateway</node>
+    <node x="3862.761085231194" y="0.0">java.lang.AutoCloseable</node>
+    <node x="2280.25" y="230.0">org.apache.flink.runtime.taskexecutor.TaskExecutorGateway</node>
+    <node x="4103.261085231194" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.AsynchronousOnStopEndpoint</node>
+    <node x="4710.261085231194" y="410.0">org.apache.flink.runtime.rest.handler.legacy.ExecutionGraphCacheTest.CountingRestfulGateway</node>
+    <node x="1859.1777518978606" y="80.0">org.apache.flink.runtime.rpc.RpcGateway</node>
+    <node x="1474.8635265700484" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.ExceptionalEndpoint</node>
+    <node x="5632.323585231194" y="230.0">org.apache.flink.runtime.jobmaster.JobMasterService</node>
+    <node x="2881.3635265700486" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.SimpleRpcEndpoint</node>
+    <node x="4015.761085231194" y="690.0">org.apache.flink.runtime.entrypoint.component.JobDispatcherResourceManagerComponent</node>
+    <node x="1472.7499999999998" y="230.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.ExceptionalGateway</node>
+    <node x="4786.630391649414" y="610.0">org.apache.flink.runtime.dispatcher.StandaloneDispatcher</node>
+    <node x="4631.630391649414" y="610.0">org.apache.flink.runtime.dispatcher.MiniDispatcher</node>
+    <node x="4659.386085231194" y="230.0">org.apache.flink.runtime.webmonitor.RestfulGateway</node>
+    <node x="794.25" y="230.0">org.apache.flink.runtime.resourcemanager.InfoMessageListenerRpcGateway</node>
+    <node x="2597.3635265700486" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.MainThreadExecutorOnStopEndpoint</node>
+    <node x="482.25" y="230.0">org.apache.flink.runtime.rpc.RpcEndpointTest.BaseGateway</node>
+    <node x="1390.8444185645271" y="530.0">org.apache.hadoop.yarn.client.api.async.AMRMClientAsync.CallbackHandler</node>
+    <node x="5227.323585231194" y="230.0">org.apache.flink.runtime.jobmaster.KvStateRegistryGateway</node>
+    <node x="3436.011085231194" y="530.0">org.apache.flink.runtime.resourcemanager.ResourceManager</node>
+    <node x="3224.3635265700486" y="410.0">org.apache.flink.runtime.resourcemanager.ResourceManagerGateway</node>
+    <node x="4644.130391649414" y="530.0">org.apache.flink.runtime.dispatcher.Dispatcher</node>
+    <node x="1757.9999999999998" y="230.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.AsyncOperationGateway</node>
+    <node x="1417.0944185645271" y="610.0">org.apache.flink.yarn.YarnResourceManager</node>
+    <node x="4918.261085231194" y="410.0">org.apache.flink.runtime.jobmanager.SubmittedJobGraphStore.SubmittedJobGraphListener</node>
+    <node x="1884.4335317460318" y="530.0">org.apache.flink.runtime.rpc.akka.FencedAkkaInvocationHandler</node>
+    <node x="1054.2499999999998" y="230.0">org.apache.flink.runtime.rpc.akka.AkkaBasedEndpoint</node>
+    <node x="4531.261085231194" y="410.0">org.apache.flink.runtime.dispatcher.DispatcherGateway</node>
+    <node x="3719.5527518978606" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.FailingOnStopEndpoint</node>
+    <node x="5434.323585231194" y="230.0">org.apache.flink.runtime.jobmaster.KvStateLocationOracle</node>
+    <node x="0.0" y="230.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorHandshakeTest.WrongRpcGateway</node>
+    <node x="5207.698585231194" y="410.0">org.apache.flink.runtime.jobmaster.JobMasterGateway</node>
+    <node x="3504.5527518978606" y="410.0">org.apache.flink.runtime.leaderelection.LeaderContender</node>
+    <node x="1660.8635265700484" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.ExceptionalFutureEndpoint</node>
+    <node x="3666.761085231194" y="690.0">org.apache.flink.runtime.entrypoint.component.SessionDispatcherResourceManagerComponent</node>
+    <node x="5335.927751897861" y="530.0">org.apache.flink.runtime.jobmaster.JobMaster</node>
+    <node x="4974.323585231194" y="230.0">org.apache.flink.runtime.checkpoint.CheckpointCoordinatorGateway</node>
+    <node x="219.0" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.DummyRpcEndpoint</node>
+    <node x="3130.0" y="230.0">org.apache.flink.runtime.rpc.FencedRpcGateway</node>
+    <node x="3643.511085231194" y="610.0">org.apache.flink.mesos.runtime.clusterframework.MesosResourceManager</node>
+    <node x="4348.261085231194" y="410.0">org.apache.flink.runtime.rpc.FencedRpcEndpoint</node>
+    <node x="3846.261085231194" y="80.0">org.apache.flink.util.AutoCloseableAsync</node>
+    <node x="627.25" y="230.0">org.apache.flink.runtime.rpc.RpcEndpointTest.DifferentGateway</node>
+    <node x="2452.3635265700486" y="410.0">org.apache.flink.runtime.taskexecutor.TaskExecutor</node>
+    <node x="3172.9277518978606" y="530.0">org.apache.flink.runtime.webmonitor.retriever.impl.RpcGatewayRetrieverTest.DummyRpcEndpoint</node>
+    <node x="4077.261085231194" y="530.0">org.apache.flink.runtime.rpc.akka.AkkaRpcServiceTest.CountingAsynchronousOnStopEndpoint</node>
+    <node x="3063.3635265700486" y="410.0">org.apache.flink.runtime.webmonitor.retriever.impl.RpcGatewayRetrieverTest.DummyGateway</node>
+    <node x="1239.2499999999998" y="230.0">org.apache.flink.runtime.rpc.RpcServer</node>
+    <node x="1882.8635265700484" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.TerminatingAfterOnStopFutureCompletionEndpoint</node>
+    <node x="3939.261085231194" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.OnStartEndpoint</node>
+    <node x="3857.511085231194" y="610.0">org.apache.flink.runtime.entrypoint.component.DispatcherResourceManagerComponent</node>
+    <node x="2806.75" y="530.0">org.apache.flink.runtime.jobmaster.JobMasterTest.AllocationIdsResourceManagerGateway</node>
+    <node x="1236.1135265700484" y="410.0">org.apache.flink.runtime.rpc.akka.AkkaInvocationHandler</node>
+    <node x="2088.25" y="230.0">org.apache.flink.runtime.rpc.akka.AkkaRpcActorOversizedResponseMessageTest.MessageRpcGateway</node>
+    <node x="3403.511085231194" y="610.0">org.apache.flink.runtime.resourcemanager.StandaloneResourceManager</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.DummyRpcEndpoint" target="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.DummyRpcGateway">
+      <point x="-41.5" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.FencedAkkaInvocationHandler" target="org.apache.flink.runtime.rpc.akka.AkkaInvocationHandler">
+      <point x="-56.0" y="-15.0" />
+      <point x="1940.4335317460318" y="510.0" />
+      <point x="1327.6135265700484" y="510.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.jobmaster.JobMasterGateway" target="org.apache.flink.runtime.checkpoint.CheckpointCoordinatorGateway">
+      <point x="-19.875" y="-15.0" />
+      <point x="5267.323585231194" y="280.0" />
+      <point x="5090.823585231194" y="280.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.jobmaster.JobMasterGateway" target="org.apache.flink.runtime.jobmaster.KvStateLocationOracle">
+      <point x="59.625" y="-15.0" />
+      <point x="5346.823585231194" y="390.0" />
+      <point x="5523.323585231194" y="390.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.jobmaster.JobMaster" target="org.apache.flink.runtime.jobmaster.JobMasterService">
+      <point x="36.666666666666515" y="-15.0" />
+      <point x="5427.594418564528" y="510.0" />
+      <point x="5707.823585231194" y="510.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.mesos.runtime.clusterframework.MesosResourceManager" target="org.apache.flink.runtime.resourcemanager.ResourceManager">
+      <point x="0.0" y="-15.0" />
+      <point x="3740.511085231194" y="585.0" />
+      <point x="3565.1777518978606" y="585.0" />
+      <point x="51.66666666666674" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.webmonitor.retriever.impl.RpcGatewayRetrieverTest.DummyGateway" target="org.apache.flink.runtime.rpc.FencedRpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="3133.8635265700486" y="390.0" />
+      <point x="3178.0" y="390.0" />
+      <point x="-32.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpointTest.BaseEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="32.0" y="-15.0" />
+      <point x="1018.0527518978606" y="320.0" />
+      <point x="2626.892037612146" y="320.0" />
+      <point x="-47.92857142857156" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rest.handler.legacy.ExecutionGraphCacheTest.CountingRestfulGateway" target="org.apache.flink.runtime.webmonitor.RestfulGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="4804.261085231194" y="390.0" />
+      <point x="4761.386085231194" y="390.0" />
+      <point x="34.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.checkpoint.CheckpointCoordinatorGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="5090.823585231194" y="140.0" />
+      <point x="1974.6777518978606" y="140.0" />
+      <point x="56.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpoint" target="org.apache.flink.util.AutoCloseableAsync">
+      <point x="30.5" y="-15.0" />
+      <point x="2705.3206090407175" y="210.0" />
+      <point x="3873.761085231194" y="210.0" />
+      <point x="-55.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.TerminatingAfterOnStopFutureCompletionEndpoint" target="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.AsyncOperationGateway">
+      <point x="-86.0" y="-15.0" />
+      <point x="1968.8635265700484" y="300.0" />
+      <point x="1852.4999999999998" y="300.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpointTest.BaseEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpointTest.BaseGateway">
+      <point x="-32.0" y="-15.0" />
+      <point x="954.0527518978606" y="290.0" />
+      <point x="576.0" y="290.0" />
+      <point x="31.25" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.FencedRpcEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="0.0" y="-15.0" />
+      <point x="4429.761085231194" y="310.0" />
+      <point x="2731.4634661835744" y="310.0" />
+      <point x="56.64285714285688" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.util.AutoCloseableAsync" target="java.lang.AutoCloseable">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.jobmaster.JobMasterService" target="org.apache.flink.util.AutoCloseableAsync">
+      <point x="0.0" y="-15.0" />
+      <point x="5707.823585231194" y="130.0" />
+      <point x="3983.761085231194" y="130.0" />
+      <point x="55.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.FencedAkkaInvocationHandler" target="org.apache.flink.runtime.rpc.FencedRpcGateway">
+      <point x="56.0" y="-15.0" />
+      <point x="2052.433531746032" y="510.0" />
+      <point x="2437.1135265700486" y="510.0" />
+      <point x="2437.1135265700486" y="380.0" />
+      <point x="3146.0" y="380.0" />
+      <point x="-64.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.DummyRpcGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="260.5" y="140.0" />
+      <point x="1869.6777518978606" y="140.0" />
+      <point x="-49.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.jobmaster.JobMasterGateway" target="org.apache.flink.runtime.rpc.FencedRpcGateway">
+      <point x="-59.625" y="-15.0" />
+      <point x="5227.573585231194" y="290.0" />
+      <point x="3274.0" y="290.0" />
+      <point x="64.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.jobmaster.JobMasterGateway" target="org.apache.flink.runtime.jobmaster.KvStateRegistryGateway">
+      <point x="19.875" y="-15.0" />
+      <point x="5307.073585231194" y="390.0" />
+      <point x="5320.823585231194" y="390.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.taskexecutor.TaskExecutor" target="org.apache.flink.runtime.taskexecutor.TaskExecutorGateway">
+      <point x="-31.25" y="-15.0" />
+      <point x="2483.6135265700486" y="300.0" />
+      <point x="2367.25" y="300.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.jobmaster.JobMaster" target="org.apache.flink.runtime.jobmaster.JobMasterGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="5390.927751897861" y="460.0" />
+      <point x="5287.198585231194" y="460.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.AsynchronousOnStopEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="0.0" y="-15.0" />
+      <point x="4215.761085231194" y="320.0" />
+      <point x="2722.749180469289" y="320.0" />
+      <point x="47.92857142857156" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.entrypoint.component.SessionDispatcherResourceManagerComponent" target="org.apache.flink.runtime.entrypoint.component.DispatcherResourceManagerComponent">
+      <point x="0.0" y="-15.0" />
+      <point x="3831.261085231194" y="665.0" />
+      <point x="3928.761085231194" y="665.0" />
+      <point x="-71.25" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.Dispatcher" target="org.apache.flink.runtime.dispatcher.DispatcherGateway">
+      <point x="13.75" y="-15.0" />
+      <point x="4712.880391649414" y="480.0" />
+      <point x="4610.761085231194" y="480.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.entrypoint.component.DispatcherResourceManagerComponent" target="org.apache.flink.util.AutoCloseableAsync">
+      <point x="-71.25" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.StandaloneDispatcher" target="org.apache.flink.runtime.dispatcher.Dispatcher">
+      <point x="0.0" y="-15.0" />
+      <point x="4874.130391649414" y="585.0" />
+      <point x="4735.79705831608" y="585.0" />
+      <point x="36.66666666666674" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager" target="org.apache.flink.runtime.rpc.FencedRpcEndpoint">
+      <point x="51.66666666666674" y="-15.0" />
+      <point x="3565.1777518978606" y="510.0" />
+      <point x="4375.427751897861" y="510.0" />
+      <point x="-54.33333333333326" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.webmonitor.retriever.impl.RpcGatewayRetrieverTest.DummyRpcEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="-41.5" y="-15.0" />
+      <point x="3214.4277518978606" y="500.0" />
+      <point x="3052.8635265700486" y="500.0" />
+      <point x="3052.8635265700486" y="350.0" />
+      <point x="2696.606323326432" y="350.0" />
+      <point x="21.785714285714675" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpointTest.DifferentGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="700.75" y="160.0" />
+      <point x="1883.6777518978606" y="160.0" />
+      <point x="-35.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager" target="org.apache.flink.runtime.leaderelection.LeaderContender">
+      <point x="0.0" y="-15.0" />
+      <point x="3513.511085231194" y="510.0" />
+      <point x="3541.8027518978606" y="510.0" />
+      <point x="-37.25" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.yarn.YarnResourceManager" target="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync.CallbackHandler">
+      <point x="-45.25" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.webmonitor.retriever.impl.RpcGatewayRetrieverTest.DummyRpcEndpoint" target="org.apache.flink.runtime.webmonitor.retriever.impl.RpcGatewayRetrieverTest.DummyGateway">
+      <point x="41.5" y="-15.0" />
+      <point x="3297.4277518978606" y="490.0" />
+      <point x="3133.8635265700486" y="490.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManagerGateway" target="org.apache.flink.runtime.rpc.FencedRpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="3326.3635265700486" y="390.0" />
+      <point x="3210.0" y="390.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorOversizedResponseMessageTest.MessageRpcGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="2174.25" y="210.0" />
+      <point x="1925.6777518978606" y="210.0" />
+      <point x="7.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.yarn.YarnResourceManager" target="org.apache.flink.runtime.resourcemanager.ResourceManager">
+      <point x="45.25" y="-15.0" />
+      <point x="1552.8444185645271" y="585.0" />
+      <point x="3461.8444185645276" y="585.0" />
+      <point x="-51.66666666666674" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.webmonitor.RestfulGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="4727.386085231194" y="150.0" />
+      <point x="1967.6777518978606" y="150.0" />
+      <point x="49.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.Dispatcher" target="org.apache.flink.runtime.leaderelection.LeaderContender">
+      <point x="-41.25" y="-15.0" />
+      <point x="4657.880391649414" y="500.0" />
+      <point x="3616.3027518978606" y="500.0" />
+      <point x="37.25" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.ExceptionalGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="1554.2499999999998" y="200.0" />
+      <point x="1911.6777518978606" y="200.0" />
+      <point x="-7.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpointTest.ExtendedEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpointTest.BaseEndpoint">
+      <point x="51.33333333333303" y="-15.0" />
+      <point x="713.3635265700477" y="510.0" />
+      <point x="986.0527518978606" y="510.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpointTest.ExtendedEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpointTest.ExtendedGateway">
+      <point x="-51.33333333333303" y="-15.0" />
+      <point x="610.6968599033817" y="510.0" />
+      <point x="480.5" y="510.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.StandaloneResourceManager" target="org.apache.flink.runtime.resourcemanager.ResourceManager">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.jobmaster.JobMaster" target="org.apache.flink.runtime.rpc.FencedRpcEndpoint">
+      <point x="-36.66666666666663" y="-15.0" />
+      <point x="5354.261085231194" y="470.0" />
+      <point x="4484.094418564528" y="470.0" />
+      <point x="54.33333333333326" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.entrypoint.component.DispatcherResourceManagerComponent" target="org.apache.flink.runtime.dispatcher.Dispatcher">
+      <point x="71.25" y="-15.0" />
+      <point x="4071.261085231194" y="585.0" />
+      <point x="4662.463724982747" y="585.0" />
+      <point x="-36.66666666666663" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpoint" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="-30.5" y="-15.0" />
+      <point x="2644.3206090407175" y="190.0" />
+      <point x="1939.6777518978606" y="190.0" />
+      <point x="21.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.TerminatingAfterOnStopFutureCompletionEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="86.0" y="-15.0" />
+      <point x="2140.8635265700486" y="350.0" />
+      <point x="2653.034894755003" y="350.0" />
+      <point x="-21.785714285714675" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.ExceptionalEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="41.5" y="-15.0" />
+      <point x="1599.3635265700484" y="330.0" />
+      <point x="2635.6063233264317" y="330.0" />
+      <point x="-39.21428571428578" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpointTest.ExtendedGateway" target="org.apache.flink.runtime.rpc.RpcEndpointTest.BaseGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="480.5" y="300.0" />
+      <point x="513.5" y="300.0" />
+      <point x="-31.25" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.InfoMessageListenerRpcGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="914.25" y="170.0" />
+      <point x="1890.6777518978606" y="170.0" />
+      <point x="-28.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.FailingOnStopEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="-45.25" y="-15.0" />
+      <point x="3764.8027518978606" y="340.0" />
+      <point x="2705.3206090407175" y="340.0" />
+      <point x="30.5" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.ExceptionalFutureEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="50.5" y="-15.0" />
+      <point x="1812.3635265700484" y="340.0" />
+      <point x="2644.3206090407175" y="340.0" />
+      <point x="-30.5" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.taskexecutor.TaskExecutorGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="2367.25" y="200.0" />
+      <point x="1932.6777518978606" y="200.0" />
+      <point x="14.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.FailingOnStopEndpoint" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="45.25" y="-15.0" />
+      <point x="3855.3027518978606" y="160.0" />
+      <point x="1960.6777518978606" y="160.0" />
+      <point x="42.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.MiniDispatcher" target="org.apache.flink.runtime.dispatcher.Dispatcher">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.entrypoint.component.JobDispatcherResourceManagerComponent" target="org.apache.flink.runtime.entrypoint.component.DispatcherResourceManagerComponent">
+      <point x="0.0" y="-15.0" />
+      <point x="4168.761085231194" y="665.0" />
+      <point x="4071.261085231194" y="665.0" />
+      <point x="71.25" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.FencedRpcGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="3210.0" y="170.0" />
+      <point x="1953.6777518978606" y="170.0" />
+      <point x="35.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.taskexecutor.TaskExecutor" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="31.25" y="-15.0" />
+      <point x="2546.1135265700486" y="370.0" />
+      <point x="2670.4634661835744" y="370.0" />
+      <point x="-4.357142857143117" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaInvocationHandler" target="org.apache.flink.runtime.rpc.akka.AkkaBasedEndpoint">
+      <point x="-45.75" y="-15.0" />
+      <point x="1281.8635265700484" y="300.0" />
+      <point x="1136.7499999999998" y="300.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcServiceTest.CountingAsynchronousOnStopEndpoint" target="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.AsynchronousOnStopEndpoint">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.OnStartEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="0.0" y="-15.0" />
+      <point x="4011.261085231194" y="330.0" />
+      <point x="2714.034894755003" y="330.0" />
+      <point x="39.214285714285325" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorHandshakeTest.WrongRpcGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="79.5" y="130.0" />
+      <point x="1862.6777518978606" y="130.0" />
+      <point x="-56.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpointTest.ExtendedEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpointTest.DifferentGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="662.0301932367147" y="510.0" />
+      <point x="617.125" y="510.0" />
+      <point x="617.125" y="300.0" />
+      <point x="700.75" y="300.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpointTest.BaseGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="544.75" y="150.0" />
+      <point x="1876.6777518978606" y="150.0" />
+      <point x="-42.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaInvocationHandler" target="org.apache.flink.runtime.rpc.RpcServer">
+      <point x="45.75" y="-15.0" />
+      <point x="1373.3635265700484" y="300.0" />
+      <point x="1292.7499999999998" y="300.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorOversizedResponseMessageTest.MessageRpcEndpoint" target="org.apache.flink.runtime.rpc.akka.AkkaRpcActorOversizedResponseMessageTest.MessageRpcGateway">
+      <point x="-43.75" y="-15.0" />
+      <point x="2290.6135265700486" y="300.0" />
+      <point x="2174.25" y="300.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcServer" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="1292.7499999999998" y="190.0" />
+      <point x="1904.6777518978606" y="190.0" />
+      <point x="-14.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaBasedEndpoint" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="1136.7499999999998" y="180.0" />
+      <point x="1897.6777518978606" y="180.0" />
+      <point x="-21.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.DispatcherGateway" target="org.apache.flink.runtime.webmonitor.RestfulGateway">
+      <point x="39.75" y="-15.0" />
+      <point x="4650.511085231194" y="390.0" />
+      <point x="4693.386085231194" y="390.0" />
+      <point x="-34.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.AsyncOperationGateway" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="1852.4999999999998" y="210.0" />
+      <point x="1918.6777518978606" y="210.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.ExceptionalFutureEndpoint" target="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.ExceptionalGateway">
+      <point x="-50.5" y="-15.0" />
+      <point x="1711.3635265700484" y="300.0" />
+      <point x="1594.9999999999998" y="300.0" />
+      <point x="40.75" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.SimpleRpcEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="-40.25" y="-15.0" />
+      <point x="2921.6135265700486" y="360.0" />
+      <point x="2687.892037612146" y="360.0" />
+      <point x="13.071428571428442" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.Dispatcher" target="org.apache.flink.runtime.rpc.FencedRpcEndpoint">
+      <point x="-13.75" y="-15.0" />
+      <point x="4685.380391649414" y="490.0" />
+      <point x="4429.761085231194" y="490.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager" target="org.apache.flink.runtime.resourcemanager.ResourceManagerGateway">
+      <point x="-51.66666666666674" y="-15.0" />
+      <point x="3461.8444185645276" y="510.0" />
+      <point x="3377.3635265700486" y="510.0" />
+      <point x="51.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.DummyRpcEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="41.5" y="-15.0" />
+      <point x="343.5" y="310.0" />
+      <point x="2618.17775189786" y="310.0" />
+      <point x="-56.64285714285734" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.DispatcherGateway" target="org.apache.flink.runtime.rpc.FencedRpcGateway">
+      <point x="-39.75" y="-15.0" />
+      <point x="4571.011085231194" y="300.0" />
+      <point x="3242.0" y="300.0" />
+      <point x="32.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.MainThreadExecutorOnStopEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="0.0" y="-15.0" />
+      <point x="2729.3635265700486" y="370.0" />
+      <point x="2679.1777518978606" y="370.0" />
+      <point x="4.357142857143117" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.SimpleRpcEndpoint" target="org.apache.flink.runtime.rpc.RpcGateway">
+      <point x="40.25" y="-15.0" />
+      <point x="3002.1135265700486" y="370.0" />
+      <point x="2951.9277518978606" y="370.0" />
+      <point x="2951.9277518978606" y="180.0" />
+      <point x="1946.6777518978606" y="180.0" />
+      <point x="28.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorOversizedResponseMessageTest.MessageRpcEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint">
+      <point x="43.75" y="-15.0" />
+      <point x="2378.1135265700486" y="360.0" />
+      <point x="2661.749180469289" y="360.0" />
+      <point x="-13.071428571428442" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.ExceptionalEndpoint" target="org.apache.flink.runtime.rpc.akka.AkkaRpcActorTest.ExceptionalGateway">
+      <point x="-41.5" y="-15.0" />
+      <point x="1516.3635265700484" y="300.0" />
+      <point x="1513.4999999999998" y="300.0" />
+      <point x="-40.75" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.Dispatcher" target="org.apache.flink.runtime.jobmanager.SubmittedJobGraphStore.SubmittedJobGraphListener">
+      <point x="41.25" y="-15.0" />
+      <point x="4740.380391649414" y="510.0" />
+      <point x="5022.761085231194" y="510.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.jobmaster.JobMasterTest.AllocationIdsResourceManagerGateway" target="org.apache.flink.runtime.resourcemanager.ResourceManagerGateway">
+      <point x="0.0" y="-15.0" />
+      <point x="2946.25" y="510.0" />
+      <point x="3275.3635265700486" y="510.0" />
+      <point x="-51.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="5108.0" y="376.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
