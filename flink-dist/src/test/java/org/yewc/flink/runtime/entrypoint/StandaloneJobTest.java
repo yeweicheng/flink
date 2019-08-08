@@ -6,12 +6,12 @@ import org.apache.flink.runtime.entrypoint.parser.CommandLineParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class StandaloneSessionTest {
+public class StandaloneJobTest {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(StandaloneSessionTest.class);
+	protected static final Logger LOG = LoggerFactory.getLogger(StandaloneJobTest.class);
 
 	public static void main(String[] argsx) throws Exception {
-		final String configDir = "D:/conf";
+		final String configDir = "E:/conf";
 		final int restPort = 1234;
 		final String key = "key";
 		final String value = "value";

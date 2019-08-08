@@ -1,6 +1,8 @@
 package org.yewc.flink.runtime.taskexecutor;
 
-import org.apache.flink.configuration.*;
+import org.apache.flink.configuration.Configuration;
+import org.apache.flink.configuration.ConfigurationUtils;
+import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.core.fs.FileSystem;
 import org.apache.flink.runtime.clusterframework.types.ResourceID;
 import org.apache.flink.runtime.entrypoint.ClusterConfiguration;
@@ -26,7 +28,7 @@ public class TaskManagerRunnerTest {
 	protected static final Logger LOG = LoggerFactory.getLogger(TaskManagerRunnerTest.class);
 
 	public static void main(String[] argsx) throws Exception {
-		final String configDir = "D:/conf";
+		final String configDir = "E:/conf";
 		final String[] args = {"--configDir", configDir};
 
 		// startup checks and logging
