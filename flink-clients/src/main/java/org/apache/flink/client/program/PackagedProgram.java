@@ -43,11 +43,7 @@ import java.lang.reflect.Modifier;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.jar.Attributes;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -90,6 +86,8 @@ public class PackagedProgram {
 
 	private SavepointRestoreSettings savepointSettings = SavepointRestoreSettings.none();
 
+	private static final Map<String, List<File>> jarFileMap = new HashMap<>();
+
 	/**
 	 * Creates an instance that wraps the plan defined in the jar file using the given
 	 * argument.
@@ -105,7 +103,7 @@ public class PackagedProgram {
 	 *         may be a missing / wrong class or manifest files.
 	 */
 	public PackagedProgram(File jarFile, String... args) throws ProgramInvocationException {
-		this(jarFile, Collections.<URL>emptyList(), null, args);
+		this(jarFile, Collections.<URL>emptyList(), null, true, args);
 	}
 
 	/**
@@ -125,7 +123,7 @@ public class PackagedProgram {
 	 *         may be a missing / wrong class or manifest files.
 	 */
 	public PackagedProgram(File jarFile, List<URL> classpaths, String... args) throws ProgramInvocationException {
-		this(jarFile, classpaths, null, args);
+		this(jarFile, classpaths, null, true, args);
 	}
 
 	/**
@@ -138,6 +136,8 @@ public class PackagedProgram {
 	 * @param entryPointClassName
 	 *        Name of the class which generates the plan. Overrides the class defined
 	 *        in the jar file manifest
+	 * @param extractedJars
+	 *        Whether to decompress jar
 	 * @param args
 	 *        Optional. The arguments used to create the pact plan, depend on
 	 *        implementation of the pact plan. See getDescription().
@@ -145,8 +145,8 @@ public class PackagedProgram {
 	 *         This invocation is thrown if the Program can't be properly loaded. Causes
 	 *         may be a missing / wrong class or manifest files.
 	 */
-	public PackagedProgram(File jarFile, @Nullable String entryPointClassName, String... args) throws ProgramInvocationException {
-		this(jarFile, Collections.<URL>emptyList(), entryPointClassName, args);
+	public PackagedProgram(File jarFile, @Nullable String entryPointClassName, boolean extractedJars, String... args) throws ProgramInvocationException {
+		this(jarFile, Collections.<URL>emptyList(), entryPointClassName, extractedJars, args);
 	}
 
 	/**
@@ -161,6 +161,8 @@ public class PackagedProgram {
 	 * @param entryPointClassName
 	 *        Name of the class which generates the plan. Overrides the class defined
 	 *        in the jar file manifest
+	 * @param extractedJars
+	 *        Whether to decompress jar
 	 * @param args
 	 *        Optional. The arguments used to create the pact plan, depend on
 	 *        implementation of the pact plan. See getDescription().
@@ -168,7 +170,7 @@ public class PackagedProgram {
 	 *         This invocation is thrown if the Program can't be properly loaded. Causes
 	 *         may be a missing / wrong class or manifest files.
 	 */
-	public PackagedProgram(File jarFile, List<URL> classpaths, @Nullable String entryPointClassName, String... args) throws ProgramInvocationException {
+	public PackagedProgram(File jarFile, List<URL> classpaths, @Nullable String entryPointClassName, boolean extractedJars, String... args) throws ProgramInvocationException {
 		if (jarFile == null) {
 			throw new IllegalArgumentException("The jar file must not be null.");
 		}
@@ -191,7 +193,11 @@ public class PackagedProgram {
 		}
 
 		// now that we have an entry point, we can extract the nested jar files (if any)
-		this.extractedTempLibraries = extractContainedLibraries(jarFileUrl);
+		if (extractedJars) {
+			this.extractedTempLibraries = extractContainedLibraries(jarFileUrl);
+		} else {
+			this.extractedTempLibraries = Collections.emptyList();
+		}
 		this.classpaths = classpaths;
 		this.userCodeClassLoader = JobWithJars.buildUserCodeClassLoader(getAllLibraries(), classpaths, getClass().getClassLoader());
 
@@ -665,6 +671,11 @@ public class PackagedProgram {
 	 */
 	public static List<File> extractContainedLibraries(URL jarFile) throws ProgramInvocationException {
 
+		String jarFileName = jarFile.getFile();
+		if (jarFileMap.containsKey(jarFileName)) {
+			return jarFileMap.get(jarFileName);
+		}
+
 		Random rnd = new Random();
 
 		JarFile jar = null;
@@ -748,6 +759,7 @@ public class PackagedProgram {
 					}
 				}
 
+				jarFileMap.put(jarFileName, extractedTempLibraries);
 				return extractedTempLibraries;
 			}
 		}
