@@ -61,7 +61,7 @@ function start_hadoop_cluster() {
             return 1
         else
             echo "Waiting for hadoop cluster to come up. We have been trying for $time_diff seconds, retrying ..."
-            sleep 10
+            sleep 5
         fi
     done
 
@@ -73,6 +73,26 @@ function start_hadoop_cluster() {
     then
         return 1
     fi
+
+    # try and see if NodeManagers are up, otherwise the Flink job will not have enough resources
+    # to run
+    nm_running="0"
+    start_time=$(date +%s)
+    while [ "$nm_running" -lt "2" ]; do
+        current_time=$(date +%s)
+        time_diff=$((current_time - start_time))
+
+        if [ $time_diff -ge $MAX_RETRY_SECONDS ]; then
+            return 1
+        else
+            echo "We only have $nm_running NodeManagers up. We have been trying for $time_diff seconds, retrying ..."
+            sleep 1
+        fi
+
+        docker exec -it master bash -c "kinit -kt /home/hadoop-user/hadoop-user.keytab hadoop-user"
+        nm_running=`docker exec -it master bash -c "yarn node -list" | grep RUNNING | wc -l`
+        docker exec -it master bash -c "kdestroy"
+    done
 
     return 0
 }
@@ -118,7 +138,7 @@ docker exec -it master bash -c "tar xzf /home/hadoop-user/$FLINK_TARBALL --direc
 # minimal Flink config, bebe
 docker exec -it master bash -c "echo \"security.kerberos.login.keytab: /home/hadoop-user/hadoop-user.keytab\" > /home/hadoop-user/$FLINK_DIRNAME/conf/flink-conf.yaml"
 docker exec -it master bash -c "echo \"security.kerberos.login.principal: hadoop-user\" >> /home/hadoop-user/$FLINK_DIRNAME/conf/flink-conf.yaml"
-docker exec -it master bash -c "echo \"slot.request.timeout: 60000\" >> /home/hadoop-user/$FLINK_DIRNAME/conf/flink-conf.yaml"
+docker exec -it master bash -c "echo \"slot.request.timeout: 120000\" >> /home/hadoop-user/$FLINK_DIRNAME/conf/flink-conf.yaml"
 docker exec -it master bash -c "echo \"containerized.heap-cutoff-min: 100\" >> /home/hadoop-user/$FLINK_DIRNAME/conf/flink-conf.yaml"
 
 echo "Flink config:"
@@ -152,6 +172,13 @@ else
     echo "Docker logs:"
     docker logs master
     exit 1
+
+    echo "Flink logs:"
+    docker exec -it master bash -c "kinit -kt /home/hadoop-user/hadoop-user.keytab hadoop-user"
+    application_id=`docker exec -it master bash -c "yarn application -list -appStates ALL" | grep "Flink session cluster" | awk '{print \$1}'`
+    echo "Application ID: $application_id"
+    docker exec -it master bash -c "yarn logs -applicationId $application_id"
+    docker exec -it master bash -c "kdestroy"
 fi
 
 if [[ ! "$OUTPUT" =~ "consummation,1" ]]; then
