@@ -50,11 +50,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.jar.Attributes;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -97,6 +93,8 @@ public class PackagedProgram {
 
 	private SavepointRestoreSettings savepointSettings = SavepointRestoreSettings.none();
 
+	private static final Map<String, List<File>> jarFileMap = new HashMap<>();
+
 	/**
 	 * Flag indicating whether the job is a Python job.
 	 */
@@ -117,7 +115,7 @@ public class PackagedProgram {
 	 *         may be a missing / wrong class or manifest files.
 	 */
 	public PackagedProgram(File jarFile, String... args) throws ProgramInvocationException {
-		this(jarFile, Collections.<URL>emptyList(), null, args);
+		this(jarFile, Collections.<URL>emptyList(), null, true, args);
 	}
 
 	/**
@@ -137,7 +135,7 @@ public class PackagedProgram {
 	 *         may be a missing / wrong class or manifest files.
 	 */
 	public PackagedProgram(File jarFile, List<URL> classpaths, String... args) throws ProgramInvocationException {
-		this(jarFile, classpaths, null, args);
+		this(jarFile, classpaths, null, true, args);
 	}
 
 	/**
@@ -157,8 +155,8 @@ public class PackagedProgram {
 	 *         This invocation is thrown if the Program can't be properly loaded. Causes
 	 *         may be a missing / wrong class or manifest files.
 	 */
-	public PackagedProgram(File jarFile, @Nullable String entryPointClassName, String... args) throws ProgramInvocationException {
-		this(jarFile, Collections.<URL>emptyList(), entryPointClassName, args);
+	public PackagedProgram(File jarFile, @Nullable String entryPointClassName, boolean extractedJars, String... args) throws ProgramInvocationException {
+		this(jarFile, Collections.<URL>emptyList(), entryPointClassName, extractedJars, args);
 	}
 
 	/**
@@ -180,7 +178,7 @@ public class PackagedProgram {
 	 *         This invocation is thrown if the Program can't be properly loaded. Causes
 	 *         may be a missing / wrong class or manifest files.
 	 */
-	public PackagedProgram(File jarFile, List<URL> classpaths, @Nullable String entryPointClassName, String... args) throws ProgramInvocationException {
+	public PackagedProgram(File jarFile, List<URL> classpaths, @Nullable String entryPointClassName, boolean extractedJars, String... args) throws ProgramInvocationException {
 		// Whether the job is a Python job.
 		isPython = entryPointClassName != null && (entryPointClassName.equals("org.apache.flink.client.python.PythonDriver")
 			|| entryPointClassName.equals("org.apache.flink.client.python.PythonGatewayServer"));
@@ -207,7 +205,11 @@ public class PackagedProgram {
 		}
 
 		// now that we have an entry point, we can extract the nested jar files (if any)
-		this.extractedTempLibraries = jarFileUrl == null ? Collections.emptyList() : extractContainedLibraries(jarFileUrl);
+		if (extractedJars) {
+			this.extractedTempLibraries = jarFileUrl == null ? Collections.emptyList() : extractContainedLibraries(jarFileUrl);
+		} else {
+			this.extractedTempLibraries = Collections.emptyList();
+		}
 		this.classpaths = classpaths;
 		this.userCodeClassLoader = JobWithJars.buildUserCodeClassLoader(getAllLibraries(), classpaths, getClass().getClassLoader());
 

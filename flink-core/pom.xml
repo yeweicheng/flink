@@ -126,6 +126,10 @@ under the License.
 			<version>1.16.20</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-shaded-asm-6</artifactId>
+		</dependency>
 
 	</dependencies>
 
