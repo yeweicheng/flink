@@ -17,26 +17,28 @@
  */
 package org.apache.flink.table.planner.codegen.agg
 
+import org.apache.flink.api.common.functions.RuntimeContext
 import org.apache.flink.table.api.TableException
 import org.apache.flink.table.dataformat.GenericRow
 import org.apache.flink.table.dataformat.util.BaseRowUtil
 import org.apache.flink.table.expressions._
+import org.apache.flink.table.functions.UserDefinedAggregateFunction
 import org.apache.flink.table.planner.codegen.CodeGenUtils.{BASE_ROW, _}
 import org.apache.flink.table.planner.codegen.Indenter.toISC
 import org.apache.flink.table.planner.codegen._
 import org.apache.flink.table.planner.codegen.agg.AggsHandlerCodeGenerator._
 import org.apache.flink.table.planner.dataview.{DataViewSpec, ListViewSpec, MapViewSpec}
-import org.apache.flink.table.planner.expressions.{PlannerProctimeAttribute, PlannerRowtimeAttribute, PlannerWindowEnd, PlannerWindowProperty, PlannerWindowStart, ResolvedAggInputReference}
+import org.apache.flink.table.planner.expressions.DeclarativeExpressionResolver.toRexInputRef
+import org.apache.flink.table.planner.expressions.{PlannerProctimeAttribute, PlannerRowtimeAttribute, PlannerWindowEnd, PlannerWindowProperty, PlannerWindowStart}
 import org.apache.flink.table.planner.functions.aggfunctions.DeclarativeAggregateFunction
 import org.apache.flink.table.planner.plan.utils.AggregateInfoList
 import org.apache.flink.table.runtime.dataview.{StateListView, StateMapView}
-import org.apache.flink.table.runtime.generated.{AggsHandleFunction, TableAggsHandleFunction, GeneratedAggsHandleFunction, GeneratedNamespaceAggsHandleFunction, GeneratedNamespaceTableAggsHandleFunction, GeneratedTableAggsHandleFunction, NamespaceAggsHandleFunction, NamespaceTableAggsHandleFunction}
-import org.apache.flink.table.runtime.types.PlannerTypeUtils
+import org.apache.flink.table.runtime.generated.{AggsHandleFunction, GeneratedAggsHandleFunction, GeneratedNamespaceAggsHandleFunction, GeneratedNamespaceTableAggsHandleFunction, GeneratedTableAggsHandleFunction, NamespaceAggsHandleFunction, NamespaceTableAggsHandleFunction, TableAggsHandleFunction}
 import org.apache.flink.table.runtime.types.LogicalTypeDataTypeConverter.fromDataTypeToLogicalType
+import org.apache.flink.table.runtime.types.PlannerTypeUtils
 import org.apache.flink.table.types.DataType
 import org.apache.flink.table.types.logical.{BooleanType, IntType, LogicalType, RowType}
 import org.apache.flink.table.types.utils.TypeConversions.fromLegacyInfoToDataType
-import org.apache.flink.table.functions.UserDefinedAggregateFunction
 import org.apache.flink.util.Collector
 
 import org.apache.calcite.rex.RexLiteral
@@ -57,6 +59,7 @@ class AggsHandlerCodeGenerator(
   private val inputType = RowType.of(inputFieldTypes: _*)
 
   /** constant expressions that act like a second input in the parameter indices. */
+  private var constants: Seq[RexLiteral] = Seq()
   private var constantExprs: Seq[GeneratedExpression] = Seq()
 
   /** window properties like window_start and window_end, only used in window aggregates */
@@ -133,6 +136,7 @@ class AggsHandlerCodeGenerator(
     */
   def withConstants(literals: Seq[RexLiteral]): AggsHandlerCodeGenerator = {
     // create constants
+    this.constants = literals
     val exprGenerator = new ExprCodeGenerator(ctx, INPUT_NOT_NULL)
     val exprs = literals.map(exprGenerator.generateExpression)
     this.constantExprs = exprs.map(ctx.addReusableConstant(_, nullCheck = true))
@@ -222,7 +226,7 @@ class AggsHandlerCodeGenerator(
             aggBufferOffset,
             aggBufferSize,
             inputFieldTypes,
-            constantExprs,
+            constants,
             relBuilder)
         case _: UserDefinedAggregateFunction[_, _] =>
           new ImperativeAggCodeGen(
@@ -303,7 +307,7 @@ class AggsHandlerCodeGenerator(
         throw new TableException(s"filter arg must be boolean, but is $filterType, " +
             s"the aggregate is $aggName.")
       }
-      Some(new ResolvedAggInputReference(name, filterArg, inputFieldTypes(filterArg)))
+      Some(toRexInputRef(relBuilder, filterArg, inputFieldTypes(filterArg)))
     } else {
       None
     }
@@ -330,18 +334,27 @@ class AggsHandlerCodeGenerator(
 
     val functionName = newName(name)
 
+    val RUNTIME_CONTEXT = className[RuntimeContext]
+
     val functionCode =
       j"""
         public final class $functionName implements $AGGS_HANDLER_FUNCTION {
 
           ${ctx.reuseMemberCode()}
 
+          private $STATE_DATA_VIEW_STORE store;
+
           public $functionName(java.lang.Object[] references) throws Exception {
             ${ctx.reuseInitCode()}
           }
 
+          private $RUNTIME_CONTEXT getRuntimeContext() {
+            return store.getRuntimeContext();
+          }
+
           @Override
           public void open($STATE_DATA_VIEW_STORE store) throws Exception {
+            this.store = store;
             ${ctx.reuseOpenCode()}
           }
 
@@ -938,20 +951,29 @@ class AggsHandlerCodeGenerator(
       windowProperties: Seq[PlannerWindowProperty]): Seq[GeneratedExpression] = {
     windowProperties.map {
       case w: PlannerWindowStart =>
-        // return a Timestamp(Internal is long)
+        // return a Timestamp(Internal is SqlTimestamp)
         GeneratedExpression(
-          s"$NAMESPACE_TERM.getStart()", "false", "", w.resultType)
+          s"$SQL_TIMESTAMP.fromEpochMillis($NAMESPACE_TERM.getStart())",
+          "false",
+          "",
+          w.resultType)
       case w: PlannerWindowEnd =>
-        // return a Timestamp(Internal is long)
+        // return a Timestamp(Internal is SqlTimestamp)
         GeneratedExpression(
-          s"$NAMESPACE_TERM.getEnd()", "false", "", w.resultType)
+          s"$SQL_TIMESTAMP.fromEpochMillis($NAMESPACE_TERM.getEnd())",
+          "false",
+          "",
+          w.resultType)
       case r: PlannerRowtimeAttribute =>
-        // return a rowtime, use long as internal type
+        // return a rowtime, use SqlTimestamp as internal type
         GeneratedExpression(
-          s"$NAMESPACE_TERM.getEnd() - 1", "false", "", r.resultType)
+          s"$SQL_TIMESTAMP.fromEpochMillis($NAMESPACE_TERM.getEnd() - 1)",
+          "false",
+          "",
+          r.resultType)
       case p: PlannerProctimeAttribute =>
         // ignore this property, it will be null at the position later
-        GeneratedExpression("-1L", "true", "", p.resultType)
+        GeneratedExpression(s"$SQL_TIMESTAMP.fromEpochMillis(-1L)", "true", "", p.resultType)
     }
   }
 

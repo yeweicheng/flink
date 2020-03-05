@@ -95,7 +95,7 @@ public class LocalInputChannel extends InputChannel implements BufferAvailabilit
 	// ------------------------------------------------------------------------
 
 	@Override
-	void requestSubpartition(int subpartitionIndex) throws IOException, InterruptedException {
+	protected void requestSubpartition(int subpartitionIndex) throws IOException, InterruptedException {
 
 		boolean retriggerRequest = false;
 
@@ -235,13 +235,6 @@ public class LocalInputChannel extends InputChannel implements BufferAvailabilit
 	@Override
 	boolean isReleased() {
 		return isReleased;
-	}
-
-	@Override
-	void notifySubpartitionConsumed() throws IOException {
-		if (subpartitionView != null) {
-			subpartitionView.notifySubpartitionConsumed();
-		}
 	}
 
 	/**
